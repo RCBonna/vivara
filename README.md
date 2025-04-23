@@ -1,2 +1,2 @@
-# vivara.github.io
+# vivara
 Site Estático Condomínio Vivara
