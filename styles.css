@@ -117,3 +117,42 @@ button {
 button:hover {
     background-color: #5a6268;
 }
+.rodape {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    margin-top: 40px;
+    border-top: 3px solid #2563eb;
+}
+.taxas-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.mes-bloco {
+    background-color: #f1f3f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.imagem-pair {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.imagem-pair img {
+    max-width: 100%;
+    width: 48%;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
