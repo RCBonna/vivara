@@ -1,106 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Extratos C6 Bank</title>
     <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <h1>Condomínio Vivara Residência - Gestão Financeira</h1>
+        <h1>Condomínio Vivara Residência - Gestão Financeira</h1>
     </header>
     <div class="container">
-      <h2>Prestação de Contas</h2>
-      <h3>Extratos do Banco C6</h3>
-      <ul class="extratos">
-        <li>
-          <a href="./extratos/2024_07_c6a.pdf" target="_blank"
-            >Extrato Julho 2024</a
-          >
-        </li>
-        <li>
-          <a href="./extratos/2024_08_c6a.pdf" target="_blank"
-            >Extrato Agosto 2024</a
-          >
-        </li>
-        <li>
-          <a href="./extratos/2024_09_c6a.pdf" target="_blank"
-            >Extrato Setembro 2024</a
-          >
-        </li>
-        <li>
-          <a href="./extratos/2024_10_c6a.pdf" target="_blank"
-            >Extrato Outubro 2024</a
-          >
-        </li>
-        <li>
-          <a href="./extratos/2024_11_c6a.pdf" target="_blank"
-            >Extrato Novembro 2024</a
-          >
-        </li>
-        <li>
-          <a href="./extratos/2024_12_c6a.pdf" target="_blank"
-            >Extrato Dezembro 2024</a
-          >
-        </li>
-        <li>
-          <a href="./extratos/2025_01_c6a.pdf" target="_blank"
-            >Extrato Janeiro 2025</a
-          >
-        </li>
-        <li>
-          <a href="./extratos/2025_02_c6a.pdf" target="_blank"
-            >Extrato Fevereiro 2025</a
-          >
-        </li>
-        <li>
-          <a href="./extratos/2025_03_c6a.pdf" target="_blank"
-            >Extrato Março 2025</a
-          >
-        </li>
-        <li>
-          <a href="./extratos/2025_04_c6a.pdf" target="_blank"
-            >Extrato Abril 2025</a
-          >
-        </li>
-      </ul>
+        <h2>Prestação de Contas</h2>
+        <h3>Extratos do Banco C6</h3>
+
+        <label for="ano-select">Selecione o Ano:</label>
+        <select id="ano-select">
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+        </select>
+
+        <div id="extratos-container">
+            <ul class="extratos">
+                </ul>
+        </div>
     </div>
     <script>
-      (function () {
-        function c() {
-          var b = a.contentDocument || a.contentWindow.document;
-          if (b) {
-            var d = b.createElement("script");
-            d.innerHTML =
-              "window.__CF$cv$params={r:'93055da3da7aed32',t:'MTc0NDY1NjM4NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-            b.getElementsByTagName("head")[0].appendChild(d);
-          }
+        const anoSelect = document.getElementById('ano-select');
+        const extratosContainer = document.getElementById('extratos-container');
+        const extratos = {
+            '2024': [
+                { mes: 'Julho', arquivo: '2024_07_c6a.pdf' },
+                { mes: 'Agosto', arquivo: '2024_08_c6a.pdf' },
+                { mes: 'Setembro', arquivo: '2024_09_c6a.pdf' },
+                { mes: 'Outubro', arquivo: '2024_10_c6a.pdf' },
+                { mes: 'Novembro', arquivo: '2024_11_c6a.pdf' },
+                { mes: 'Dezembro', arquivo: '2024_12_c6a.pdf' }
+            ],
+            '2025': [
+                { mes: 'Janeiro', arquivo: '2025_01_c6a.pdf' },
+                { mes: 'Fevereiro', arquivo: '2025_02_c6a.pdf' },
+                { mes: 'Março', arquivo: '2025_03_c6a.pdf' },
+                { mes: 'Abril', arquivo: '2025_04_c6a.pdf' }
+            ],
+            '2026': [] // Adicione os meses de 2026 aqui, se houver
+        };
+
+        function atualizarExtratos(ano) {
+            extratosContainer.innerHTML = ''; // Limpa os extratos anteriores
+            const ul = document.createElement('ul');
+            ul.classList.add('extratos');
+
+            if (extratos[ano] && extratos[ano].length > 0) {
+                extratos[ano].forEach(extrato => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `./extratos/${extrato.arquivo}`;
+                    a.textContent = `Extrato ${extrato.mes} ${ano}`;
+                    a.target = '_blank';
+                    li.appendChild(a);
+                    ul.appendChild(li);
+                });
+            } else {
+                const li = document.createElement('li');
+                li.textContent = `Nenhum extrato disponível para ${ano}.`;
+                ul.appendChild(li);
+            }
+
+            extratosContainer.appendChild(ul);
         }
-        if (document.body) {
-          var a = document.createElement("iframe");
-          a.height = 1;
-          a.width = 1;
-          a.style.position = "absolute";
-          a.style.top = 0;
-          a.style.left = 0;
-          a.style.border = "none";
-          a.style.visibility = "hidden";
-          document.body.appendChild(a);
-          if ("loading" !== document.readyState) c();
-          else if (window.addEventListener)
-            document.addEventListener("DOMContentLoaded", c);
-          else {
-            var e = document.onreadystatechange || function () {};
-            document.onreadystatechange = function (b) {
-              e(b);
-              "loading" !== document.readyState &&
-                ((document.onreadystatechange = e), c());
-            };
-          }
+
+        // Define o ano atual como selecionado por padrão
+        const anoAtual = new Date().getFullYear().toString();
+        if (extratos.hasOwnProperty(anoAtual)) {
+            anoSelect.value = anoAtual;
+            atualizarExtratos(anoAtual);
+        } else {
+             atualizarExtratos(anoSelect.value);
         }
-      })();
+
+        anoSelect.addEventListener('change', (event) => {
+            const anoSelecionado = event.target.value;
+            atualizarExtratos(anoSelecionado);
+        });
     </script>
     <script src="footer.js"></script>
-  </body>
+</body>
 </html>
