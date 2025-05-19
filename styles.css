@@ -125,9 +125,9 @@ button:hover {
     position: relative;
     bottom: 0;
     width: 100%;
-    font-size: 14px;
+    font-size: 12px;
     margin-top: 40px;
-    border-top: 3px solid #2563eb;
+    border-top: 1px solid #000000;
 }
 .taxas-grid {
     display: flex;
