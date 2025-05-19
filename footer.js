@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const hoje = new Date();
     const dataFormatada = hoje.toLocaleDateString("pt-BR");
   
-    rodape.innerHTML = `<p>Versão 1.01 - Atualizado em ${dataFormatada}</p>`;
+    rodape.innerHTML = `<p>Versão 1.02 - Data: ${dataFormatada} - contato: VivaraResidencia@outlook.com</p>`;
     document.body.appendChild(rodape);
   });
   
